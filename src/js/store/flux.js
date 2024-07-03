@@ -1,7 +1,7 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			// I need to consume all of these variables
+			
 			characters: [],
 			planets: [],
 			species: [],
@@ -11,7 +11,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			favorites: [],
 		},
 		actions: {
-			// Create all fetch needed 
+			
 			getCharacters: async () => {
 				try {
 					const herosResponse = await fetch("https://www.swapi.tech/api/people")
@@ -58,7 +58,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			},
 
-			// get hero details
+			
 			getHero: async (id) => {
 				try {
 					const heroResponse = await fetch("https://www.swapi.tech/api/people/" + id)
@@ -92,16 +92,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 
 
-			// Add here the Favorites and deleteFavorites!!!
+			
 			favorites: (item) => {
 				const store = getStore()
 				if (store.favorites.includes(item)) {
-					//if favorite exists, erase favorite
 					let aux = []
 					aux = store.favorites.filter((elemento) => elemento != item)
 					setStore({ favorites: aux })
 				} else {
-					//If favorite doesn't exists, add favorite
 					setStore({ favorites: [...store.favorites, item] })
 				}
 			}
